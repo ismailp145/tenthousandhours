@@ -7,6 +7,7 @@ let seconds = 0;
 let minutes = 0;
 let hours = 0;
 let isRunning = false;
+let timer;
 const TARGET_HOURS = 10000;
 const TARGET_SECONDS = TARGET_HOURS * 3600;
 
@@ -23,7 +24,7 @@ stopButton.addEventListener("click", () => {
 function startTimer() {
   if (!isRunning) {
     console.log(isRunning);
-    let timer = setInterval(() => {
+    timer = setInterval(() => {
       safeTimer.innerHTML = "00000:00:" + seconds;
       seconds++;
     }, 1000);
