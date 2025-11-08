@@ -30,11 +30,11 @@ function startTimer() {
   if (!isRunning) {
     console.log(isRunning);
     timer = setInterval(() => {
-      if (seconds >= 10) {
-        safeTimer.innerHTML = "00000:00:" + seconds;
-      } else {
-        safeTimer.innerHTML = "00000:00:0" + seconds;
-      }
+      secondString = seconds.toString().padStart(2, "0");
+      minutesString = minutes.toString().padStart(2, "0");
+      hoursString = hours.toString().padStart(4, "0");
+      safeTimer.innerHTML =
+        hoursString + ":" + minutesString + ":" + secondString;
       seconds++;
     }, 1000);
     isRunning = true;
