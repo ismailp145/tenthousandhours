@@ -21,11 +21,20 @@ stopButton.addEventListener("click", () => {
   stopTimer();
 });
 
+resetButton.addEventListener("click", () => {
+  console.log("resetbuttonclicked");
+  resetTimer();
+});
+
 function startTimer() {
   if (!isRunning) {
     console.log(isRunning);
     timer = setInterval(() => {
-      safeTimer.innerHTML = "00000:00:" + seconds;
+      if (seconds >= 10) {
+        safeTimer.innerHTML = "00000:00:" + seconds;
+      } else {
+        safeTimer.innerHTML = "00000:00:0" + seconds;
+      }
       seconds++;
     }, 1000);
     isRunning = true;
@@ -35,4 +44,10 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timer);
   isRunning = false;
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  isRunning = false;
+  safeTimer.innerHTML = "0000:00:00";
 }
